@@ -3,6 +3,7 @@
   <component name="ProjectModuleManager">
     <modules>
       <module fileurl="file://$PROJECT_DIR$/wisata_candi.iml" filepath="$PROJECT_DIR$/wisata_candi.iml" />
+      <module fileurl="file://$PROJECT_DIR$/android/wisata_candi_android.iml" filepath="$PROJECT_DIR$/android/wisata_candi_android.iml" />
     </modules>
   </component>
 </project>

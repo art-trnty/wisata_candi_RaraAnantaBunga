@@ -1,8 +1,6 @@
 name: wisata_candi
 description: "Aplikasi Wisata Candi"
 
-publish_to: 'none' # Remove this line if you wish to publish to pub.dev
-
 version: 1.0.0+1
 
 environment:
@@ -23,25 +21,7 @@ dev_dependencies:
 
 flutter:
 
-
   uses-material-design: true
 
-  # To add assets to your application, add an assets section, like this:
-  # assets:
-  #   - images/a_dot_burr.jpeg
-  #   - images/a_dot_ham.jpeg
-
   assets:
-    - images/borobudur.jpeg.
-    - images/jago.jpeg
-    - images/kalasan.jpeg
-    - images/logo_candi.png
-    - images/lumbung.jpeg
-    - images/mendut.jpeg
-    - images/placeholder_image.png
-    - images/plaosan.jpeg
-    - images/prambanan.jpeg
-    - images/sari.jpeg
-    - images/sewu.jpeg
-    - images/singosari.jpeg
-
+    - images/
