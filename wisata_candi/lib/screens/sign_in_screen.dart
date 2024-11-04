@@ -71,9 +71,10 @@ class _SignInScreenState extends State<SignInScreen> {
                         child: Text('Sign In')),
                     // TODO: 8. Pasang TextButton Sign In
                     SizedBox(height: 10),
-                    TextButton(
-                        onPressed: (){},
-                        child: Text('Belum punya akun? Daftar disini.')),
+                    // Alternatif
+                    // TextButton(
+                    //     onPressed: (){},
+                    //     child: Text('Belum punya akun? Daftar disini.')),
                     RichText(
                         text: TextSpan(
                           text: 'Belum punya akun? ',
