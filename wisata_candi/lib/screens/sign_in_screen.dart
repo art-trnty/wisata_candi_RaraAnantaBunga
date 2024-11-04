@@ -1,14 +1,22 @@
 import 'package:flutter/material.dart';
 
-class SignInScreen extends StatelessWidget {
+class SignInScreen extends StatefulWidget {
   SignInScreen({super.key});
 
+  @override
+  State<SignInScreen> createState() => _SignInScreenState();
+}
+
+class _SignInScreenState extends State<SignInScreen> {
   // TODO: 1. PDeklarasikan variabel
   final TextEditingController _usernameController = TextEditingController();
+
   final TextEditingController _passswordController = TextEditingController();
 
   String _errorText = '';
+
   bool _isSignedIn = false;
+
   bool _obscurePassword = true;
 
   @override
@@ -44,7 +52,11 @@ class SignInScreen extends StatelessWidget {
                         errorText: _errorText.isNotEmpty ? _errorText : null,
                         border: OutlineInputBorder(),
                         suffixIcon: IconButton(
-                          onPressed: () {},
+                          onPressed: () {
+                            setState(() {
+                              _obscurePassword = !_obscurePassword;
+                            });
+                          },
                           icon: Icon(
                             _obscurePassword ? Icons.visibility_off
                                 : Icons.visibility,
@@ -78,12 +90,13 @@ class SignInScreen extends StatelessWidget {
                           ],
                         ),
                     ),
-                ),
+                ],
+              ),
             ),
           ),
         ),
       ),
-      );
-    }
+    );
   }
+}
 
