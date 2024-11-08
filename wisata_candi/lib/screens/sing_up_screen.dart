@@ -1,41 +1,68 @@
 import 'package:flutter/material.dart';
 
 class SingUpScreen extends StatefulWidget {
-  SignUpScreen({super.key});
+  const SingUpScreen({super.key});
 
   @override
-  State<SignUpScreen> createState() => _SignUpScreenState();
+  State<SingUpScreen> createState() => _SingUpScreenState();
 }
 
-class _SignUpScreenState extends State<_SignUpScreenState> {
-  // TODO: 1. PDeklarasikan variabel
+class _SingUpScreenState extends State<SingUpScreen> {
+  final TextEditingController _namaController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
-
-  final TextEditingController _passswordController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
 
   String _errorText = '';
 
-  bool _isSignedIn = false;
-
   bool _obscurePassword = true;
+
+  // TODO: 1. Membuat fungsi _signUp
+  void _signUp() {
+    String name = _namaController.text.trim();
+    String username = _usernameController.text.trim();
+    String password = _passwordController.text.trim();
+
+    if (password.length < 8 ||
+        !password.contains(RegExp(r'[A-Z]')) ||
+        !password.contains(RegExp(r'[a-z]')) ||
+        !password.contains(RegExp(r'[0-9]')) ||
+        !password.contains(RegExp(r'[!@#$%^&*(),.?":{}|<>]')))
+      print('*** Sign up berhasil!');
+    print('Nama : $name');
+    print('Nama Pengguna : $username');
+    print('Password : $password');
+  }
+
+  // TODO: 2. Membuat fungsi dispose
+  @override
+  void dispose() {
+    // TODO: Implement dispose
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO: 2. Pasang AppBar
-      appBar: AppBar(title: Text('Sign In'),),
-      // TODO: 3. Pasang Body
+      appBar: AppBar(
+        title: const Text('Sign Up'),
+      ),
       body: Center(
         child: SingleChildScrollView(
           child: Padding(
-            padding : const EdgeInsets.all(16),
+            padding: const EdgeInsets.all(16),
             child: Form(
               child: Column(
-                // TODO: 4. Atur mainAxisAligment dan crossAxisAligment
-                mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.center,
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
-                  // TODO: 5. Pasang TextFormField Nama Pengguna
+                  TextFormField(
+                    controller: _namaController,
+                    decoration: InputDecoration(
+                      labelText: "Nama",
+                      border: OutlineInputBorder(),
+                    ),
+                  ),
+                  const SizedBox(height: 20),
                   TextFormField(
                     controller: _usernameController,
                     decoration: InputDecoration(
@@ -43,10 +70,9 @@ class _SignUpScreenState extends State<_SignUpScreenState> {
                       border: OutlineInputBorder(),
                     ),
                   ),
-                  // TODO: 6. Pasang TextFormField Kata Sandi
-                  SizedBox(height: 20),
+                  const SizedBox(height: 20),
                   TextFormField(
-                    controller: _passswordController,
+                    controller: _passwordController,
                     decoration: InputDecoration(
                       labelText: "Kata Sandi",
                       errorText: _errorText.isNotEmpty ? _errorText : null,
@@ -58,39 +84,16 @@ class _SignUpScreenState extends State<_SignUpScreenState> {
                           });
                         },
                         icon: Icon(
-                          _obscurePassword ? Icons.visibility_off
+                          _obscurePassword
+                              ? Icons.visibility_off
                               : Icons.visibility,
-                        ),),
+                        ),
+                      ),
                     ),
                     obscureText: _obscurePassword,
                   ),
-                  // TODO: 7. Pasang TextFormButton Sign In
-                  SizedBox(height: 20),
-                  ElevatedButton(
-                      onPressed: (){},
-                      child: Text('Sign In')),
-                  // TODO: 8. Pasang TextButton Sign In
-                  SizedBox(height: 10),
-                  // Alternatif
-                  // TextButton(
-                  //     onPressed: (){},
-                  //     child: Text('Belum punya akun? Daftar disini.')),
-                  RichText(
-                    text: TextSpan(
-                      text: 'Belum punya akun? ',
-                      style: TextStyle(fontSize: 16, color: Colors.deepPurple),
-                      children: <TextSpan> [
-                        TextSpan(
-                          text: 'Daftar disini.',
-                          style: TextStyle(
-                              color: Colors.blue,
-                              decoration: TextDecoration.underline,
-                              fontSize: 16
-                          ),
-                        ),
-                      ],
-                    ),
-                  ),
+                  const SizedBox(height: 20),
+                  ElevatedButton(onPressed: _signUp, child: Text('Sign Up')),
                 ],
               ),
             ),
@@ -100,4 +103,3 @@ class _SignUpScreenState extends State<_SignUpScreenState> {
     );
   }
 }
-

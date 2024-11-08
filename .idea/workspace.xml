@@ -4,7 +4,16 @@
     <option name="autoReloadType" value="NONE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="089e9657-d667-4c47-8dab-7b1ab433aa68" name="Changes" comment="" />
+    <list default="true" id="089e9657-d667-4c47-8dab-7b1ab433aa68" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/other.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/sing_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/sing_up_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/pubspec.lock" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -23,6 +32,18 @@
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;art-trnty&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/art-trnty/wisata_candi_RaraAnantaBunga.git&quot;,
+    &quot;accountId&quot;: &quot;debc4c4c-d047-4b3a-84af-267c48e7c72b&quot;
+  }
+}</component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
@@ -47,7 +68,7 @@
     &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
     &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
     &quot;last_opened_file_path&quot;: &quot;C:/Users/u-mdp/flutter/bin/cache/dart-sdk&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;flutter.settings&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
     &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
 }</component>
