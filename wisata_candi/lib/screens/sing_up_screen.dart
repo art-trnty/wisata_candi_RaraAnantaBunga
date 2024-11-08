@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-class SingUpScreen extends StatefulWidget {
-  const SingUpScreen({super.key});
+class SignUpScreen extends StatefulWidget {
+  const SignUpScreen({super.key});
 
   @override
-  State<SingUpScreen> createState() => _SingUpScreenState();
+  State<SignUpScreen> createState() => _SignUpScreenState();
 }
 
-class _SingUpScreenState extends State<SingUpScreen> {
-  final TextEditingController _namaController = TextEditingController();
+class _SignUpScreenState extends State<SignUpScreen> {
+  final TextEditingController _nameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
 
@@ -18,9 +18,9 @@ class _SingUpScreenState extends State<SingUpScreen> {
 
   // TODO: 1. Membuat fungsi _signUp
   void _signUp() {
-    String name = _namaController.text.trim();
-    String username = _usernameController.text.trim();
-    String password = _passwordController.text.trim();
+    final String name = _nameController.text.trim();
+    final String username = _usernameController.text.trim();
+    final String password = _passwordController.text.trim();
 
     if (password.length < 8 ||
         !password.contains(RegExp(r'[A-Z]')) ||
@@ -56,7 +56,7 @@ class _SingUpScreenState extends State<SingUpScreen> {
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   TextFormField(
-                    controller: _namaController,
+                    controller: _nameController,
                     decoration: InputDecoration(
                       labelText: "Nama",
                       border: OutlineInputBorder(),
