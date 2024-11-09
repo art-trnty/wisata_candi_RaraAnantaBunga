@@ -5,13 +5,18 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="089e9657-d667-4c47-8dab-7b1ab433aa68" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/home_screen.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/favorite_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/search_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/search_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/home_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/profile_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/sign_in_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/sing_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/sing_up_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/wisata_candi/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -52,25 +57,25 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "Flutter.Unnamed.executor": "Run",
-    "Flutter.main.dart.executor": "Run",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "RunOnceActivity.cidr.known.project.marker": "true",
-    "RunOnceActivity.readMode.enableVisualFormatting": "true",
-    "SHARE_PROJECT_CONFIGURATION_FILES": "true",
-    "cf.first.check.clang-format": "false",
-    "cidr.known.project.marker": "true",
-    "dart.analysis.tool.window.visible": "false",
-    "git-widget-placeholder": "main",
-    "io.flutter.reload.alreadyRun": "true",
-    "kotlin-language-version-configured": "true",
-    "last_opened_file_path": "C:/wisata_candi_RaraAnantaBunga",
-    "settings.editor.selected.configurable": "preferences.pluginManager",
-    "show.migrate.to.gradle.popup": "false"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;Flutter.Unnamed.executor&quot;: &quot;Run&quot;,
+    &quot;Flutter.main.dart.executor&quot;: &quot;Run&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.readMode.enableVisualFormatting&quot;: &quot;true&quot;,
+    &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
+    &quot;cf.first.check.clang-format&quot;: &quot;false&quot;,
+    &quot;cidr.known.project.marker&quot;: &quot;true&quot;,
+    &quot;dart.analysis.tool.window.visible&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;io.flutter.reload.alreadyRun&quot;: &quot;true&quot;,
+    &quot;kotlin-language-version-configured&quot;: &quot;true&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/wisata_candi_RaraAnantaBunga&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.pluginManager&quot;,
+    &quot;show.migrate.to.gradle.popup&quot;: &quot;false&quot;
   }
-}]]></component>
+}</component>
   <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
   <component name="TaskManager">
     <task active="true" id="Default" summary="Default task">

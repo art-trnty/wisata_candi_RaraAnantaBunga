@@ -16,9 +16,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
 
   //TODO: 5. Implementasi Fungsi SignIn
   void signIn() {
-    setState(() {
-      isSignedIn = !isSignedIn;
-    });
+    // setState(() {
+    //   isSignedIn = true;
+    //   username = 'Rara';
+    //   fullName = 'Rara Ananta Bunga';
+    //   favoriteCandiCount = 3;
+    // });
+    Navigator.pushNamed(context, '/signin');
   }
 
   //TODO: 6. Implementasi Fungsi SignOut
@@ -53,13 +57,13 @@ class _ProfileScreenState extends State<ProfileScreen> {
                         Container(
                           decoration: BoxDecoration(
                             border:
-                            Border.all(color: Colors.deepPurple, width: 2),
+                                Border.all(color: Colors.deepPurple, width: 2),
                             shape: BoxShape.circle,
                           ),
                           child: CircleAvatar(
                             radius: 50,
                             backgroundImage:
-                            AssetImage('images/placeholder_image.png'),
+                                AssetImage('images/placeholder_image.png'),
                           ),
                         ),
                         if (isSignedIn)
