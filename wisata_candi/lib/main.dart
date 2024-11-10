@@ -8,6 +8,12 @@ import 'package:wisata_candi/screens/sign_in_screen.dart';
 import 'package:wisata_candi/screens/sing_up_screen.dart';
 import 'package:wisata_candi/screens/favorite_screen.dart';
 
+//Import paket-paket yang dibutuhkan
+import 'package:encrypt/encrypt.dart' as encrypt;
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:logger/logger.dart';
+
+// Fungsi main yang mejalankan Aplikasi
 void main() {
   runApp(const MyApp());
 }
@@ -18,30 +24,37 @@ class MyApp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      title: 'Wisata Candi',
-      theme: ThemeData(
-        appBarTheme: const AppBarTheme(
-          iconTheme: IconThemeData(color: Colors.deepPurple),
-          titleTextStyle: TextStyle(
-            color: Colors.deepPurple,
-            fontSize: 20,
-            fontWeight: FontWeight.bold,
-          ),
-        ),
-        colorScheme:
-            ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
-          primary: Colors.deepPurple,
-          surface: Colors.deepPurple[50],
-        ),
-        useMaterial3: true,
-      ),
-      home: MainScreen(),
-      initialRoute: '/',
-      routes: {
-        '/homescreen': (context) => const HomeScreen(),
-        '/signin': (context) => const SignInScreen(),
-        '/signup': (context) => const SignUpScreen(),
-      },
+      debugShowCheckedModeBanner: false,
+      home:
+      SignInScreen(), // Halaman Pertama yang ditampilkan adalah SignInPage
+
+      // Pertemuan 21-22
+      // title: 'Wisata Candi',
+      // theme: ThemeData(
+      //   appBarTheme: const AppBarTheme(
+      //     iconTheme: IconThemeData(color: Colors.deepPurple),
+      //     titleTextStyle: TextStyle(
+      //       color: Colors.deepPurple,
+      //       fontSize: 20,
+      //       fontWeight: FontWeight.bold,
+      //     ),
+      //   ),
+      //   colorScheme:
+      //       ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
+      //     primary: Colors.deepPurple,
+      //     surface: Colors.deepPurple[50],
+      //   ),
+      //   useMaterial3: true,
+      // ),
+      // home: MainScreen(),
+      // initialRoute: '/',
+      // routes: {
+      //   '/homescreen': (context) => const HomeScreen(),
+      //   '/signin': (context) => const SignInScreen(),
+      //   '/signup': (context) => const SignUpScreen(),
+      // },
+
+      // Pertemuan 10-20
       // home: const ProfileScreen(),
       // home: const DetailScreen(candi: candiList[0]),
       // home: const SignInScreen(),
@@ -52,74 +65,177 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MainScreen extends StatefulWidget {
-  const MainScreen({super.key});
+// Kelas SignUp Screen, tampilan untuk proses Pendaftaran
+class SignUpScreen extends StatelessWidget {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final Logger _logger = Logger();
 
-  @override
-  State<MainScreen> createState() => _MainScreenState();
-}
-
-class _MainScreenState extends State<MainScreen> {
-  // TODO: 1. Deklarasikan variabel
-  int _currentIndex = 0;
-  final List<Widget> _children = [
-    HomeScreen(),
-    SearchScreen(),
-    FavoriteScreen(),
-    ProfileScreen(),
-  ];
+  SignUpScreen({super.key});
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO: 2. Buat properti body berupa widget yang ditampilkan
-      body: _children[_currentIndex],
-      // TODO: 3. Buat properti bottomNavigationBar dengan nilai Theme
-      bottomNavigationBar: Theme(
-        // TODO: 4. Buat data dan Child dari Theme
-        data: Theme.of(context).copyWith(canvasColor: Colors.deepPurple[50]),
-        child: BottomNavigationBar(
-          currentIndex: _currentIndex,
-          onTap: (index) {
-            setState(() {
-              _currentIndex = index;
-            });
-          },
-          items: const [
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.home,
-                color: Colors.deepPurple,
+      appBar: AppBar(
+        title: const Text('Sign Up'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            // Input field untuk Username
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(
+                labelText: 'Username',
+                border: OutlineInputBorder(),
               ),
-              label: 'Home',
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.search,
-                color: Colors.deepPurple,
+            const SizedBox(height: 20),
+            // Input field untuk Password
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
               ),
-              label: 'Search',
+              obscureText: true,
             ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.favorite,
-                color: Colors.deepPurple,
-              ),
-              label: 'Favorite',
-            ),
-            BottomNavigationBarItem(
-              icon: Icon(
-                Icons.person,
-                color: Colors.deepPurple,
-              ),
-              label: 'Person',
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _performSignUp(context);
+              },
+              child: const Text('Sign Up'),
             ),
           ],
-          selectedItemColor: Colors.deepPurple,
-          unselectedItemColor: Colors.deepPurple[100],
-          showSelectedLabels: true,
         ),
       ),
     );
   }
+
+
+//Fungsi untuk melakukan proses sign up
+  void _performSignUp(BuildContext context) {
+    try {
+      final prefs = SharedPreferences.getInstance();
+      _logger.d('Sign up attempt');
+      final String username = _usernameController.text;
+      final String password = _passwordController.text;
+
+      // Memeriksa apakah username atau password kosong sebelum melanjutkan Sign-Up
+      if (username.isNotEmpty && password.isNotEmpty) {
+        final encrypt.Key key = encrypt.Key.fromLength(32);
+        final iv = encrypt.IV.fromLength(16);
+        final encrypter = encrypt.Encrypter(encrypt.AES(key));
+        final encryptedUsername = encrypt.encrypt(username, iv: iv);
+        final encryptedPassword = encrypt.encrypt(password, iv: iv);
+
+        _saveEncryptedDataToPrefs(
+          prefs,
+          encryptedUsername.base64,
+          encryptedPassword.base64,
+          key.base64,
+          iv.base64,
+        ).then((_) {
+          Navigator.pop(context);
+          _logger.d('Sign up Succeeded');
+        });
+      } else {
+        _logger.e('Username or password cannot be empty');
+      }
+    } catch (e) {
+      _logger.e('An error occurred: $e');
+    }
+  }
+
+  Future<void> _saveEcryptedDataToPrefs(Future<SharedPreferences> prefs,
+      String encryptedUsername,
+      String encryptedPassword,
+      String keyString,
+      String ivString,) async {
+    final sharedPreferences = await prefs;
+    // Logging : menyimpan data pengguna ke SharedPreferences
+    _logger.d('Saving user data to SharedPreferences')
+    await sharedPreferences.setString('username', encryptedUsername);
+    await sharedPreferences.setString('password', encryptedPassword);
+    await sharedPreferences.setString('key', keyString);
+    await sharedPreferences.setString('iv', ivString);
+  }
 }
+
+
+
+
+// Pertemuan 10 - 20
+// class MainScreen extends StatefulWidget {
+//   const MainScreen({super.key});
+//
+//   @override
+//   State<MainScreen> createState() => _MainScreenState();
+// }
+// class _MainScreenState extends State<MainScreen> {
+//   // TODO: 1. Deklarasikan variabel
+//   int _currentIndex = 0;
+//   final List<Widget> _children = [
+//     HomeScreen(),
+//     SearchScreen(),
+//     FavoriteScreen(),
+//     ProfileScreen(),
+//   ];
+//
+//   @override
+//   Widget build(BuildContext context) {
+//     return Scaffold(
+//       // TODO: 2. Buat properti body berupa widget yang ditampilkan
+//       body: _children[_currentIndex],
+//       // TODO: 3. Buat properti bottomNavigationBar dengan nilai Theme
+//       bottomNavigationBar: Theme(
+//         // TODO: 4. Buat data dan Child dari Theme
+//         data: Theme.of(context).copyWith(canvasColor: Colors.deepPurple[50]),
+//         child: BottomNavigationBar(
+//           currentIndex: _currentIndex,
+//           onTap: (index) {
+//             setState(() {
+//               _currentIndex = index;
+//             });
+//           },
+//           items: const [
+//             BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.home,
+//                 color: Colors.deepPurple,
+//               ),
+//               label: 'Home',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.search,
+//                 color: Colors.deepPurple,
+//               ),
+//               label: 'Search',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.favorite,
+//                 color: Colors.deepPurple,
+//               ),
+//               label: 'Favorite',
+//             ),
+//             BottomNavigationBarItem(
+//               icon: Icon(
+//                 Icons.person,
+//                 color: Colors.deepPurple,
+//               ),
+//               label: 'Person',
+//             ),
+//           ],
+//           selectedItemColor: Colors.deepPurple,
+//           unselectedItemColor: Colors.deepPurple[100],
+//           showSelectedLabels: true,
+//         ),
+//       ),
+//     );
+//   }
+// }
