@@ -26,33 +26,33 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home:
-      SignInScreen(), // Halaman Pertama yang ditampilkan adalah SignInPage
+          SignInScreen(), // Halaman Pertama yang ditampilkan adalah SignInPage
 
       // Pertemuan 21-22
-      // title: 'Wisata Candi',
-      // theme: ThemeData(
-      //   appBarTheme: const AppBarTheme(
-      //     iconTheme: IconThemeData(color: Colors.deepPurple),
-      //     titleTextStyle: TextStyle(
-      //       color: Colors.deepPurple,
-      //       fontSize: 20,
-      //       fontWeight: FontWeight.bold,
-      //     ),
-      //   ),
-      //   colorScheme:
-      //       ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
-      //     primary: Colors.deepPurple,
-      //     surface: Colors.deepPurple[50],
-      //   ),
-      //   useMaterial3: true,
-      // ),
-      // home: MainScreen(),
-      // initialRoute: '/',
-      // routes: {
-      //   '/homescreen': (context) => const HomeScreen(),
-      //   '/signin': (context) => const SignInScreen(),
-      //   '/signup': (context) => const SignUpScreen(),
-      // },
+      title: 'Wisata Candi',
+      theme: ThemeData(
+        appBarTheme: const AppBarTheme(
+          iconTheme: IconThemeData(color: Colors.deepPurple),
+          titleTextStyle: TextStyle(
+            color: Colors.deepPurple,
+            fontSize: 20,
+            fontWeight: FontWeight.bold,
+          ),
+        ),
+        colorScheme:
+            ColorScheme.fromSeed(seedColor: Colors.deepPurple).copyWith(
+          primary: Colors.deepPurple,
+          surface: Colors.deepPurple[50],
+        ),
+        useMaterial3: true,
+      ),
+      home: MainScreen(),
+      initialRoute: '/',
+      routes: {
+        '/homescreen': (context) => const HomeScreen(),
+        '/signin': (context) => SignInScreen(),
+        '/signup': (context) => SignUpScreen(),
+      },
 
       // Pertemuan 10-20
       // home: const ProfileScreen(),
@@ -115,7 +115,6 @@ class SignUpScreen extends StatelessWidget {
     );
   }
 
-
 //Fungsi untuk melakukan proses sign up
   void _performSignUp(BuildContext context) {
     try {
@@ -129,8 +128,8 @@ class SignUpScreen extends StatelessWidget {
         final encrypt.Key key = encrypt.Key.fromLength(32);
         final iv = encrypt.IV.fromLength(16);
         final encrypter = encrypt.Encrypter(encrypt.AES(key));
-        final encryptedUsername = encrypt.encrypt(username, iv: iv);
-        final encryptedPassword = encrypt.encrypt(password, iv: iv);
+        final encryptedUsername = encrypter.encrypt(username, iv: iv);
+        final encryptedPassword = encrypter.encrypt(password, iv: iv);
 
         _saveEncryptedDataToPrefs(
           prefs,
@@ -150,14 +149,16 @@ class SignUpScreen extends StatelessWidget {
     }
   }
 
-  Future<void> _saveEcryptedDataToPrefs(Future<SharedPreferences> prefs,
-      String encryptedUsername,
-      String encryptedPassword,
-      String keyString,
-      String ivString,) async {
+  Future<void> _saveEncryptedDataToPrefs(
+    Future<SharedPreferences> prefs,
+    String encryptedUsername,
+    String encryptedPassword,
+    String keyString,
+    String ivString,
+  ) async {
     final sharedPreferences = await prefs;
     // Logging : menyimpan data pengguna ke SharedPreferences
-    _logger.d('Saving user data to SharedPreferences')
+    _logger.d('Saving user data to SharedPreferences');
     await sharedPreferences.setString('username', encryptedUsername);
     await sharedPreferences.setString('password', encryptedPassword);
     await sharedPreferences.setString('key', keyString);
@@ -165,77 +166,196 @@ class SignUpScreen extends StatelessWidget {
   }
 }
 
+// Kelas SignInScreen, tampilan untuk proses sign in
+class SignInScreen extends StatelessWidget {
+  final TextEditingController _usernameController = TextEditingController();
+  final TextEditingController _passwordController = TextEditingController();
+  final Logger _logger = Logger();
 
+  SignInScreen({super.key});
 
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text('Sign In'),
+      ),
+      body: Padding(
+        padding: EdgeInsets.all(16.0),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.stretch,
+          children: <Widget>[
+            TextField(
+              controller: _usernameController,
+              decoration: const InputDecoration(
+                labelText: 'Username',
+                border: OutlineInputBorder(),
+              ),
+            ),
+            const SizedBox(height: 20),
+            TextField(
+              controller: _passwordController,
+              decoration: const InputDecoration(
+                labelText: 'Password',
+                border: OutlineInputBorder(),
+              ),
+              obscureText: true,
+            ),
+            const SizedBox(height: 20),
+            ElevatedButton(
+              onPressed: () {
+                _performSignUp(context);
+              },
+              child: const Text('Sign In'),
+            ),
+            const SizedBox(height: 20),
+            // Tombol untuk pindah kehalaman pendaftaran
+            TextButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => SignUpScreen()),
+                );
+              },
+              child: const Text('Sign Up'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
 
-// Pertemuan 10 - 20
-// class MainScreen extends StatefulWidget {
-//   const MainScreen({super.key});
-//
-//   @override
-//   State<MainScreen> createState() => _MainScreenState();
-// }
-// class _MainScreenState extends State<MainScreen> {
-//   // TODO: 1. Deklarasikan variabel
-//   int _currentIndex = 0;
-//   final List<Widget> _children = [
-//     HomeScreen(),
-//     SearchScreen(),
-//     FavoriteScreen(),
-//     ProfileScreen(),
-//   ];
-//
-//   @override
-//   Widget build(BuildContext context) {
-//     return Scaffold(
-//       // TODO: 2. Buat properti body berupa widget yang ditampilkan
-//       body: _children[_currentIndex],
-//       // TODO: 3. Buat properti bottomNavigationBar dengan nilai Theme
-//       bottomNavigationBar: Theme(
-//         // TODO: 4. Buat data dan Child dari Theme
-//         data: Theme.of(context).copyWith(canvasColor: Colors.deepPurple[50]),
-//         child: BottomNavigationBar(
-//           currentIndex: _currentIndex,
-//           onTap: (index) {
-//             setState(() {
-//               _currentIndex = index;
-//             });
-//           },
-//           items: const [
-//             BottomNavigationBarItem(
-//               icon: Icon(
-//                 Icons.home,
-//                 color: Colors.deepPurple,
-//               ),
-//               label: 'Home',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(
-//                 Icons.search,
-//                 color: Colors.deepPurple,
-//               ),
-//               label: 'Search',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(
-//                 Icons.favorite,
-//                 color: Colors.deepPurple,
-//               ),
-//               label: 'Favorite',
-//             ),
-//             BottomNavigationBarItem(
-//               icon: Icon(
-//                 Icons.person,
-//                 color: Colors.deepPurple,
-//               ),
-//               label: 'Person',
-//             ),
-//           ],
-//           selectedItemColor: Colors.deepPurple,
-//           unselectedItemColor: Colors.deepPurple[100],
-//           showSelectedLabels: true,
-//         ),
-//       ),
-//     );
-//   }
-// }
+  // Fungsi untuk melakukan proses sign in
+  void _performSignUp(BuildContext context) {
+    try {
+      final prefs = SharedPreferences.getInstance();
+
+      final String username = _usernameController.text;
+      final String password = _passwordController.text;
+      _logger.d('Sign in attempt');
+
+      if (username.isNotEmpty && password.isNotEmpty) {
+        _retrieveAndDecryptDataFromPrefs(prefs).then((data) {
+          if (data.isNotEmpty) {
+            final decryptedUsername = data['username'];
+            final decryptedPassword = data['password'];
+
+            if (username == decryptedUsername &&
+                password == decryptedPassword) {
+              Navigator.pushReplacement(
+                context,
+                MaterialPageRoute(builder: (context) => const HomeScreen()),
+              );
+              _logger.d('Sign in Succeeded');
+            } else {
+              _logger.e('Username or password is incorrect');
+            }
+          } else {
+            _logger.e('No stored credentials found');
+          }
+        });
+      } else {
+        _logger.e('Username or password cannot be empty');
+        // Tambahkan pesan untuk kasus ketika username atau password kosong
+      }
+    } catch (e) {
+      _logger.e('An error occurred: $e');
+    }
+  }
+
+  // Fungsi untuk mengambil dan mendeskripsi data dari SharedPreferences
+  Future<Map<String, String>> _retrieveAndDecryptDataFromPrefs(
+    Future<SharedPreferences> prefs,
+  ) async {
+    final sharedPreferences = await prefs;
+    final encryptedUsername = sharedPreferences.getString('username') ?? '';
+    final encryptedPassword = sharedPreferences.getString('password') ?? '';
+    final keyString = sharedPreferences.getString('key') ?? '';
+    final ivString = sharedPreferences.getString('iv') ?? '';
+
+    final encrypt.Key key = encrypt.Key.fromBase64(keyString);
+    final iv = encrypt.IV.fromBase64(ivString);
+
+    final encrypter = encrypt.Encrypter(encrypt.AES(key));
+    final decryptedUsername = encrypter.decrypt64(encryptedUsername, iv: iv);
+    final decryptedPassword = encrypter.decrypt64(encryptedPassword, iv: iv);
+
+    //Mengembalikan data terdekripsi
+    return {
+      'username': decryptedUsername,
+      'password': decryptedPassword,
+    };
+  }
+}
+
+class MainScreen extends StatefulWidget {
+  const MainScreen({super.key});
+
+  @override
+  State<MainScreen> createState() => _MainScreenState();
+}
+
+class _MainScreenState extends State<MainScreen> {
+  // TODO: 1. Deklarasikan variabel
+  int _currentIndex = 0;
+  final List<Widget> _children = [
+    HomeScreen(),
+    SearchScreen(),
+    FavoriteScreen(),
+    ProfileScreen(),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      // TODO: 2. Buat properti body berupa widget yang ditampilkan
+      body: _children[_currentIndex],
+      // TODO: 3. Buat properti bottomNavigationBar dengan nilai Theme
+      bottomNavigationBar: Theme(
+        // TODO: 4. Buat data dan Child dari Theme
+        data: Theme.of(context).copyWith(canvasColor: Colors.deepPurple[50]),
+        child: BottomNavigationBar(
+          currentIndex: _currentIndex,
+          onTap: (index) {
+            setState(() {
+              _currentIndex = index;
+            });
+          },
+          items: const [
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.home,
+                color: Colors.deepPurple,
+              ),
+              label: 'Home',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.search,
+                color: Colors.deepPurple,
+              ),
+              label: 'Search',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.favorite,
+                color: Colors.deepPurple,
+              ),
+              label: 'Favorite',
+            ),
+            BottomNavigationBarItem(
+              icon: Icon(
+                Icons.person,
+                color: Colors.deepPurple,
+              ),
+              label: 'Person',
+            ),
+          ],
+          selectedItemColor: Colors.deepPurple,
+          unselectedItemColor: Colors.deepPurple[100],
+          showSelectedLabels: true,
+        ),
+      ),
+    );
+  }
+}
