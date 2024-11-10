@@ -5,18 +5,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="089e9657-d667-4c47-8dab-7b1ab433aa68" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/favorite_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/detail_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/home_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/home_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/profile_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/profile_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/sign_in_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/sing_up_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/sing_up_screen.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/wisata_candi/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,6 +37,9 @@
     &quot;accountId&quot;: &quot;debc4c4c-d047-4b3a-84af-267c48e7c72b&quot;
   }
 }</component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="2" />
+  </component>
   <component name="ProjectColorInfo">{
   &quot;customColor&quot;: &quot;&quot;,
   &quot;associatedIndex&quot;: 0
