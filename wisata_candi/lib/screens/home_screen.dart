@@ -11,23 +11,22 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      // TODO: 1. Buat appbar dengan judul Wisata Candi
-      appBar: AppBar(
-        title: Text('Wisata Candi'),
-      ),
-      // TODO: 2. Buat body dengan Gridview.builder
+      // TODO : 1. Buat appbar dengan judul Wisata Candi
+      appBar: AppBar(title: Text('Wisata Candi'),),
+      // TODO : 2. Buat body dengan GridView.Builder
       body: GridView.builder(
-        gridDelegate:
-            SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-        padding: const EdgeInsets.all(8),
+        gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
+        padding: EdgeInsets.all(8),
         itemCount: candiList.length,
         itemBuilder: (context, index) {
-          Candi candi = candiList[index];
+          final Candi candi = candiList[index];
           return ItemCard(candi: candi);
         },
+        // TODO : 3. Buat ItemCard sebagai return value dari GridView.Builder
       ),
     );
   }
