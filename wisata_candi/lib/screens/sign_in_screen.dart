@@ -19,12 +19,14 @@ class _SignInScreenState extends State<SignInScreen> {
   bool _isSignedIn = false;
   bool _obscurePassword = true;
 
-  Future<Map<String, String>> _retrieveAndDecryptDataFromPrefs(
-      SharedPreferences prefs) async {
-    final encryptedUsername = prefs.getString('username') ?? '';
-    final encryptedPassword = prefs.getString('password') ?? '';
-    final keyString = prefs.getString('key') ?? '';
-    final ivString = prefs.getString('iv') ?? '';
+  Future<Map<String, String>> retrieveAndDecryptDataFromPrefs(
+    Future<SharedPreferences> prefs,
+  ) async {
+    final sharedPreferences = await prefs;
+    final encryptedUsername = sharedPreferences.getString('username') ?? '';
+    final encryptedPassword = sharedPreferences.getString('password') ?? '';
+    final keyString = sharedPreferences.getString('key') ?? '';
+    final ivString = sharedPreferences.getString('iv') ?? '';
 
     final encrypt.Key key = encrypt.Key.fromBase64(keyString);
     final iv = encrypt.IV.fromBase64(ivString);
@@ -42,13 +44,16 @@ class _SignInScreenState extends State<SignInScreen> {
 
   void _signIn() async {
     try {
-      final SharedPreferences prefs = await SharedPreferences.getInstance();
+      final Future<SharedPreferences> prefsFuture =
+          SharedPreferences.getInstance();
       final String username = _usernameController.text.trim();
       final String password = _passwordController.text.trim();
       print('Sign in attempt');
 
       if (username.isNotEmpty && password.isNotEmpty) {
-        final data = await _retrieveAndDecryptDataFromPrefs(prefs);
+        final SharedPreferences prefs = await prefsFuture;
+        final data = await retrieveAndDecryptDataFromPrefs(
+            prefsFuture); //hanya prefs jika dimateri
         if (data.isNotEmpty) {
           final decryptedUsername = data['username'];
           final decryptedPassword = data['password'];
@@ -60,7 +65,7 @@ class _SignInScreenState extends State<SignInScreen> {
               prefs.setBool('isSignedIn', true);
             });
 
-            // Sign in berhasil, navigasi ke layar utama
+            // Pemanggilan untuk menghapus halaman dalam tumpukan navigasi
             WidgetsBinding.instance.addPostFrameCallback((_) {
               Navigator.of(context).popUntil((route) => route.isFirst);
             });

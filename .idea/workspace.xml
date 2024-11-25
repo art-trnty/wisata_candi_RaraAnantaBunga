@@ -5,8 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="089e9657-d667-4c47-8dab-7b1ab433aa68" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/caches/deviceStreaming.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_Packages.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/libraries/Dart_SDK.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/wisata_candi_RaraAnantaBunga.iml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/wisata_candi_RaraAnantaBunga.iml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/detail_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/detail_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/screens/sign_in_screen.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/screens/sign_in_screen.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/lib/widgets/item_card.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/wisata_candi/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/wisata_candi/pubspec.lock" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,5 +87,16 @@
       <updated>1730499555255</updated>
     </task>
     <servers />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/wisata_candi/lib/main.dart</url>
+          <line>131</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>

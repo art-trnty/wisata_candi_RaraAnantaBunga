@@ -6,19 +6,20 @@ class ItemCard extends StatelessWidget {
   final dynamic candi;
 
   // TODO: 1. Deklarasikan variabel yang dibutuhkan dan pasang pada konstruktor
-  const ItemCard({required this.candi, Key? key}): super(key: key);
+  const ItemCard({required this.candi, Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     //TODO: 6. Implementasi routing ke DetailScreen
     return InkWell(
       onTap: () {
-        Navigator.push(context,
+        Navigator.push(
+          context,
           MaterialPageRoute(
             builder: (context) => DetailScreen(candi: candi),
           ),
         );
-    },
+      },
       child: Card(
         //TODO: 2. Tetapkan parameter shape, margin, dan elevation dari Cari
         shape: RoundedRectangleBorder(
@@ -32,15 +33,19 @@ class ItemCard extends StatelessWidget {
             // TODO: 3. Buat Image sebagai anak dari Column
             Expanded(
               //TODO: 7. Implementasi Hero animator
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(15),
-                child: Image.asset(
-                  candi.imageAsset,
-                  width: double.infinity,
-                  fit: BoxFit.cover,
+              child: Hero(
+                tag: candi.imageAsset,
+                child: ClipRRect(
+                  borderRadius: BorderRadius.circular(15),
+                  child: Image.asset(
+                    candi.imageAsset,
+                    width: double.infinity,
+                    fit: BoxFit.cover,
+                  ),
                 ),
               ),
             ),
+
             Padding(
               padding: const EdgeInsets.only(left: 16, top: 8),
               child: Text(

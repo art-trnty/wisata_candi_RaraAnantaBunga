@@ -6,6 +6,9 @@
       <excludeFolder url="file://$MODULE_DIR$/wisata_candi/.dart_tool" />
       <excludeFolder url="file://$MODULE_DIR$/wisata_candi/.pub" />
       <excludeFolder url="file://$MODULE_DIR$/wisata_candi/build" />
+      <excludeFolder url="file://$MODULE_DIR$/interaction/.dart_tool" />
+      <excludeFolder url="file://$MODULE_DIR$/interaction/.pub" />
+      <excludeFolder url="file://$MODULE_DIR$/interaction/build" />
     </content>
     <orderEntry type="inheritedJdk" />
     <orderEntry type="sourceFolder" forTests="false" />
