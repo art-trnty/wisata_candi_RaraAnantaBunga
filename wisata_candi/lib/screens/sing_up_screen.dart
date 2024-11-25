@@ -38,7 +38,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
     {
       setState(() {
         _errorText =
-            'Minimal terdiri dari 8 karakter, mengandung huruf besar, huruf kecil, angka, dan karakter spesial';
+            'Minimal 8 karakter Kombinasi [A-Z], [a-z], [1-9], dan [karakter spesial]';
       });
       return;
     }
